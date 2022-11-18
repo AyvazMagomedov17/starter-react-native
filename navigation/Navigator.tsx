@@ -23,8 +23,9 @@ const Navigator = (props: Props) => {
         })
     }
     return (
-        <NavigationContainer>
-            <ColorModeContext.Provider value={{ colorMode, toggleColorMode }}>
+        <ColorModeContext.Provider value={{ colorMode, toggleColorMode }}>
+
+            <NavigationContainer>
                 <Drawer.Navigator screenOptions={{
                     drawerStyle: { backgroundColor: colorMode === 'light' ? COLORS.bgLightSecondary : COLORS.bgDarkPrimary },
                     drawerActiveBackgroundColor: colorMode === 'light' ? COLORS.bgLightPrimary : COLORS.bgDarkSecondary,
@@ -41,9 +42,10 @@ const Navigator = (props: Props) => {
                 }}>
                     <Drawer.Screen name='Main' component={MainScreen} />
                 </Drawer.Navigator>
-            </ColorModeContext.Provider>
-            <StatusBar style={colorMode === 'light' ? 'dark' : 'light'} />
-        </NavigationContainer>
+                <StatusBar style={colorMode === 'light' ? 'dark' : 'light'} />
+            </NavigationContainer>
+        </ColorModeContext.Provider>
+
     )
 }
 

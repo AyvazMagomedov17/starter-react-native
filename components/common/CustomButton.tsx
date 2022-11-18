@@ -1,29 +1,19 @@
 import React from 'react'
 import { TouchableOpacity, View, Text, StyleSheet, TouchableOpacityProps } from 'react-native'
 import { CONSTS } from '../../consts/consts'
-type Props = {
-    children: any,
-    w?: number | string,
-    h?: number | string,
-    fz?: number,
-    red?: boolean,
-    color?: string,
-    fw?: "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900",
-    textColor?: string
 
-}
 interface IProps extends TouchableOpacityProps {
     children: any,
     w?: number | string,
     h?: number | string,
     fz?: number,
-    red?: boolean,
+    secondary?: boolean,
     color?: string,
     fw?: "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900",
     textColor?: string
 }
 
-function CustomButton({ children, fz, h, w, color, red, fw, textColor, ...props }: IProps) {
+function CustomButton({ children, fz, h, w, color, secondary, fw, textColor, ...props }: IProps) {
     const width = w ? typeof w === 'string' ? CONSTS.px * Number(w) : typeof w === 'number' ? w : CONSTS.px * 150 : CONSTS.px * 150
     const height = h ? typeof h === 'string' ? CONSTS.px * Number(h) : typeof h === 'number' ? h : CONSTS.px * 40 : CONSTS.px * 40
     const fontSize = fz ? CONSTS.px * fz : CONSTS.px * 14
@@ -32,7 +22,7 @@ function CustomButton({ children, fz, h, w, color, red, fw, textColor, ...props 
             borderRadius: CONSTS.px * 10,
             width,
             height,
-            backgroundColor: color ? color : red ? '#ef4444' : '#a21caf',
+            backgroundColor: color ? color : secondary ? '#ef4444' : '#a21caf',
             justifyContent: 'center',
             alignItems: 'center'
 
